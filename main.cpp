@@ -5,17 +5,19 @@
 #include <iostream>
 
 #include "cardgame.h"
+#include "player.h"
+#include "human.h"
+#include "computer.h"
+#include "blackjack.h"
 
 using namespace std;
 
 int main(){
 
-    human Player(players::card_max);
-    computer Computer(players::card_max);
-    _21point_game game;
+    human Player(player::card_max);
+    computer Computer(player::card_max);
+    blackjack game;
 
-    game.trigger("Enter 'start' to start the game: ", "start");
-    
     game.welcome();
 
     //seed rand
@@ -37,7 +39,7 @@ for (int round_num = 1; round_num <= num_of_rounds; round_num++) {
 
         int count = 0; //number of cards have been drawn so far
 
-        cout<<"-------------------Round : "<< round_num << "-------------------"<<endl;
+        cout<<"###################  Round : "<< round_num << "  ######################"<<endl;
         
         for(int b = 0; b < firstround_num_cards; b++){
             //player cards
@@ -52,25 +54,27 @@ for (int round_num = 1; round_num <= num_of_rounds; round_num++) {
         game.display_cards(display_index, Pactualcards, count);
         
         //computer try to gain advantages by switching Ace value
-        Computer.switch_ace(count);
+        Computer.choose_ace(count);
 
         //showing information to player
         Player.information_before_deciding_winner(Cactualcards, count);
 
-        cout << "Dealer is thinking...";
-        game.countdown(3);
+        // cout << "Dealer is thinking...";
+        // game.countdown(3);
 
     //computer may call the game at this point
     if (Computer.if_diff_10(Phandcard, count) == true){
-            
-        cout << "Dealer have called for comparsion!" << endl;
         
+        cout << "Dealer have chose to stay." << endl;
+        cout << '\n';
+
             string prompt_2 = "Please enter 'decide' to decide winner of this round: ";
             string word_2 = "decide";
             game.trigger(prompt_2, word_2);
+            cout << '\n';
 
         //writing in the value of the decider
-        cout << game.get_sum(Phandcard,count) << endl;
+        cout << "Your sum is: " << game.get_sum(Phandcard,count) << endl;
 
             display_index = 0;
             game.display_cards(display_index, Cactualcards, count);
@@ -85,7 +89,8 @@ for (int round_num = 1; round_num <= num_of_rounds; round_num++) {
     
     if (Computer.if_diff_10(Phandcard, count) == false ) {
         
-        cout << "Dealer have not called for comparison." << endl;
+        //cout << '\n';
+        cout << "Dealer have chose to hit." << endl;
 
         //check if sum == 21, hint is given if true
         Player.checkif_21_hint(count);
@@ -93,9 +98,10 @@ for (int round_num = 1; round_num <= num_of_rounds; round_num++) {
         //Change or switch another card or not, then rerun this process
         string more_card; //more_card as the trigger word
         more_card = Player.morecard_prompt(more_card);
+        cout << '\n';
 
         //give more cards
-        while (more_card == "yes"){
+        while (more_card == "hit"){
             //player cards
             Player.get_card(count);
             //computer cards
@@ -108,18 +114,19 @@ for (int round_num = 1; round_num <= num_of_rounds; round_num++) {
             display_index = 1;
             game.display_cards(display_index, Pactualcards, count);
 
-            more_card = "no";
+            more_card = "stay";
 
             if (game.checkif_blow(Phandcard,count) == 0){
                 more_card = Player.morecard_prompt(more_card);
+                cout << '\n';
             } else if (game.checkif_blow(Phandcard,count) == 1){
-                more_card = "no";
+                more_card = "stay";
             } else if(Computer.computer_checkif_over_18(count) == "no")
-                more_card = "no";
+                more_card = "stay";
         }
     
         //computer try to gain advantages by switching Ace value
-        Computer.switch_ace(count);
+        Computer.choose_ace(count);
 
         Player.information_before_deciding_winner(Cactualcards ,count);
 
@@ -127,6 +134,7 @@ for (int round_num = 1; round_num <= num_of_rounds; round_num++) {
         string prompt_3 = "Please enter 'decide' to decide winner of this round: ";
         string word_3 = "decide";
         game.trigger(prompt_3, word_3);
+        cout << '\n';
         
         display_index = 0;
         game.display_cards(display_index, Cactualcards, count);
@@ -141,10 +149,11 @@ for (int round_num = 1; round_num <= num_of_rounds; round_num++) {
         game.refresh_card(Chandcard);
 
         if (round_num != 5){
-        cout << "-------------------round break-------------------" << endl;
+        //cout << "###################  ROUND BREAK  ###################" << endl;
         string prompt_4 = "Please enter 'next' to enter next round: ";
         string word_4 = "next";
         game.trigger(prompt_4, word_4);
+        cout << '\n';
         }
 }
 
@@ -152,7 +161,7 @@ for (int round_num = 1; round_num <= num_of_rounds; round_num++) {
 
     Player.~human();
     Computer.~computer();
-    game.~_21point_game();
+    game.~blackjack();
 
     game.refresh_carddeck();
     return 0;

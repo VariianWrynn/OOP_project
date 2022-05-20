@@ -14,20 +14,16 @@
 
 using namespace std;
 
-human::human(){}
-
-computer::computer(){}
-
-//inpute validation and triggering the next stage of the game
 void card_game::trigger(string promption, string word_looking_for){
+    string prvent_crush;
     cout << promption;
-        string trigger;
-        cin >> trigger;
-            while (trigger != word_looking_for)
-            {
-                cout << promption;
-                cin >> trigger;
-            }
+    cin >> prvent_crush;
+    while (prvent_crush != word_looking_for)
+    {
+        cout << promption;
+        cin >> prvent_crush;
+    }
+    return;
 }
 
 //draw a new card, *handcard must be dynamically allocated
