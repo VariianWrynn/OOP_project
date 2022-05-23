@@ -101,8 +101,8 @@ void eCash::consume(int decider){
         break;
         }
     }
-    if( Money < 0 ){
-        cout << "eCash: Your balance is below zero. Current balance: " << Money - bet << " AUD" << endl;
+    if( Money = 0 ){
+        cout << "eCash: Your balance is 0 AUD" << endl;
     }
 }
 

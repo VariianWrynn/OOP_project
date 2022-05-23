@@ -28,6 +28,8 @@ class blackjack : public card_game
 
     void welcome();
 
+    void blacjjack_welcome();
+
     //return true for sum == 21, otherwise false
     bool checkif_21(int* handcard, int count);
 

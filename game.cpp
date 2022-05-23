@@ -48,6 +48,10 @@ int main(){
                 cin.clear();
                 cin.ignore(123, '\n');
             } 
+    cout << endl;
+
+    game.blacjjack_welcome();
+    cout << endl;
 
 for (int round_num = 1; round_num <= num_of_rounds; round_num++) {
     eCash.change_bet();
@@ -158,7 +162,7 @@ for (int round_num = 1; round_num <= num_of_rounds; round_num++) {
         int decider = game.decide_winner(game.get_sum(Phandcard,count),game.get_sum(Chandcard,count));
 
         eCash.consume(decider);
-        if (eCash.get_money() < 0){
+        if (eCash.get_money() == 0){
             cout << "Game will terminate." << endl;
             return 0;
         }

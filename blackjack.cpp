@@ -16,6 +16,18 @@ using namespace std;
 
 //#################### _21POINT_GAME CLASS IMPLENMENTATIONS####################//
 
+void blackjack::blacjjack_welcome(){
+    srand(time(NULL));
+    static const int nums_rands = 3;
+    int rand_start = rand() % nums_rands;
+    string start_prompt[nums_rands] = {"Bribing the dealer...", "Making AI harder...", "Shuffling cards..."};
+    cout << start_prompt[rand_start] << endl;
+    Sleep(1000);
+    string word = "Start!";
+    cout << word << endl;
+    Sleep(500);
+}
+
 void blackjack::write_score(int decider){
             if ( decider == 1 ){
                 scores[0]++;
@@ -33,25 +45,6 @@ void blackjack::welcome(){
     cout << "This is a simple balck jack game (Twenty-one game), you will be playing as a player against dealer which controlled by computer." << endl;
     cout << "For rules, please go to: https://en.wikipedia.org/wiki/Blackjack" << endl;
     cout << endl;
-
-    string prvent_crush;
-    cout << "Enter 'start' to start the game: ";
-    cin >> prvent_crush;
-    while (prvent_crush != "start")
-    {
-        cout << "Enter 'start' to start the game: ";
-        cin >> prvent_crush;
-    }
-
-    srand(time(NULL));
-    static const int nums_rands = 3;
-    int rand_start = rand() % nums_rands;
-    string start_prompt[nums_rands] = {"Bribing the dealer...", "Making AI harder...", "Shuffling cards..."};
-    cout << start_prompt[rand_start] << endl;
-    game.countdown(3);
-    string word = "Start!";
-    cout << word << endl;
-    Sleep(500);
 
 }
 

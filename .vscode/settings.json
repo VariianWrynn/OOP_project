@@ -5,6 +5,7 @@
         "atomic": "cpp",
         "istream": "cpp",
         "xlocale": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "xstring": "cpp"
     }
 }
