@@ -1,13 +1,22 @@
 all: run
 
-run: 21point.o cardgame.o main.cpp
-	g++ main.cpp 21point.o cardgame.o -o run
+run: blackjack.o cardgame.o computer.o human.o eCash.o game.cpp
+	g++ game.cpp blackjack.o cardgame.o computer.o human.o eCash.o -o run
 
-21point.o: 21point.cpp cardgame.h
-	g++ -c 21point.cpp
+blackjack.o: blackjack.cpp blackjack.h
+	g++ -c blackjack.cpp
 
 cardgame.o: cardgame.cpp cardgame.h
 	g++ -c cardgame.cpp
+
+computer.o: computer.cpp computer.h cardgame.h blackjack.h player.h
+	g++ -c computer.cpp
+
+human.o: human.cpp human.h cardgame.h blackjack.h player.h
+	g++ -c human.cpp
+
+eCash.o: eCash.cpp eCash.h
+	g++ -c eCash.cpp
 
 clean:
 	rm -f run *.o

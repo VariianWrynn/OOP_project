@@ -1,7 +1,6 @@
 #include <string>
 #include <ctime>
 #include <cstdlib>
-#include <string>
 #include <iostream>
 
 #ifdef _WIN32

@@ -32,7 +32,7 @@ void blackjack::welcome(){
 
     cout << "This is a simple balck jack game (Twenty-one game), you will be playing as a player against dealer which controlled by computer." << endl;
     cout << "For rules, please go to: https://en.wikipedia.org/wiki/Blackjack" << endl;
-    cout << "----------------------------------------------------------------" << endl;
+    cout << endl;
 
     string prvent_crush;
     cout << "Enter 'start' to start the game: ";
@@ -104,59 +104,54 @@ int blackjack::decide_winner(int player_sum, int computer_sum){
     //when both player and computer is under 21 point
     if (player_sum <= 21 && computer_sum <= 21){
         if (player_sum > computer_sum){
-            cout << "----------------------------------------------" << endl;
+            cout << endl;
             cout << "You have won this round!" << endl;
-            cout << "----------------------------------------------" << endl;
+            cout << endl;            
             return 1;
         } else if (player_sum == computer_sum){
-            cout << "----------------------------------------------" << endl;
+            cout << endl;
             cout << "This round was a draw"<< endl;
-            cout << "----------------------------------------------" << endl;
+            cout << endl;
             return 0;
         } else if (player_sum < computer_sum){
-            cout << "----------------------------------------------" << endl;
+            cout << endl;
             cout << "You have lost this round"<< endl;
-            cout << "----------------------------------------------" << endl;
+            cout << endl;
             return -1;
         }
     }
 
     //when player blow (over 21 point), and computer is blow 21
     if (player_sum > 21 && computer_sum <= 21){
-        cout << "----------------------------------------------" << endl;
+            cout << endl;
             cout << "You have lost this round"<< endl;
-            cout << "----------------------------------------------" << endl;
+            cout << endl;
             return -1;
     }
     //when computer blow and player under 21
     if (player_sum <= 21 && computer_sum > 21){
-        cout << "----------------------------------------------" << endl;
+            cout << endl;
             cout << "You have won this round"<< endl;
-            cout << "----------------------------------------------" << endl;
+            cout << endl;
             return 1;
     }
     //when both blow
     if (player_sum > 21 && computer_sum > 21){
-        cout << "----------------------------------------------" << endl;
+            cout << endl;
             cout << "This round was a draw"<< endl;
-            cout << "----------------------------------------------" << endl;
+            cout << endl;
             return 0;
         }
     return 0;
     }
 
     void blackjack::print_score(){
-        cout << "-------------------Scores-------------------" << endl;
+        cout << endl;
+        cout << endl;
+        cout << "========================= Scores ========================" << endl;
         cout << "Player: " << scores[0] << endl;
         cout << "Computer: " << scores[1] << endl;
         cout << "Draw: " << scores[2] << endl;
-
-        if (scores[0] > scores[1]){
-            cout << "You have won the game!" << endl;
-        } else if (scores[0] = scores[1]){
-            cout << "This game was a draw." << endl;
-        } else if (scores[0] < scores[1]){
-            cout << "You have lost the game." << endl;
-        }
+        cout << endl;
         return;
     }

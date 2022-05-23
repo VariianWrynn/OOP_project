@@ -40,7 +40,7 @@ int main(){
                     cout << "sum1 is: " << sum1 << endl;
 
                 if (sum1 > 21) {
-                    cout << "By choss this Ace, you will have more than 21 points and lose this round (or draw), are you sure about that?" << endl;
+                    cout << "By chose this Ace, you will have more than 21 points and lose this round (or draw), are you sure about that?" << endl;
                     cout << "Please enter the decided value of this Ace: ";
 
                     cin >> prvent_crush;

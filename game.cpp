@@ -9,6 +9,7 @@
 #include "human.h"
 #include "computer.h"
 #include "blackjack.h"
+#include "eCash.h"
 
 using namespace std;
 
@@ -18,6 +19,7 @@ int main(){
     computer Computer(player::card_max);
     blackjack game;
 
+    cout << endl;
     game.welcome();
 
     //seed rand
@@ -33,12 +35,27 @@ int main(){
     bool display_index;
 
     static const int firstround_num_cards = 2;
-    int num_of_rounds = 5;
+
+    eCash eCash;
+    eCash.login();
+    eCash.query();
+
+    int num_of_rounds;
+    cout << endl;
+    cout << "How many rounds you would like to play?" << endl;   
+        while(!(cin >> num_of_rounds)){
+                cout << "error: ";
+                cin.clear();
+                cin.ignore(123, '\n');
+            } 
 
 for (int round_num = 1; round_num <= num_of_rounds; round_num++) {
+    eCash.change_bet();
 
         int count = 0; //number of cards have been drawn so far
 
+        cout<<endl;
+        cout<<endl;
         cout<<"###################  Round : "<< round_num << "  ######################"<<endl;
         
         for(int b = 0; b < firstround_num_cards; b++){
@@ -59,9 +76,6 @@ for (int round_num = 1; round_num <= num_of_rounds; round_num++) {
         //showing information to player
         Player.information_before_deciding_winner(Cactualcards, count);
 
-        // cout << "Dealer is thinking...";
-        // game.countdown(3);
-
     //computer may call the game at this point
     if (Computer.if_diff_10(Phandcard, count) == true){
         
@@ -81,6 +95,7 @@ for (int round_num = 1; round_num <= num_of_rounds; round_num++) {
             Computer.show_computer_cards(count);
 
             int decider = game.decide_winner(game.get_sum(Phandcard,count),game.get_sum(Chandcard,count));
+            eCash.consume(decider);
                 
             //writing in the score
             game.write_score(decider);
@@ -142,19 +157,26 @@ for (int round_num = 1; round_num <= num_of_rounds; round_num++) {
 
         int decider = game.decide_winner(game.get_sum(Phandcard,count),game.get_sum(Chandcard,count));
 
+        eCash.consume(decider);
+        if (eCash.get_money() < 0){
+            cout << "Game will terminate." << endl;
+            return 0;
+        }
+
         game.write_score(decider);
 
     }
         game.refresh_card(Phandcard);
         game.refresh_card(Chandcard);
 
-        if (round_num != 5){
+        if (round_num != num_of_rounds){
         //cout << "###################  ROUND BREAK  ###################" << endl;
         string prompt_4 = "Please enter 'next' to enter next round: ";
         string word_4 = "next";
         game.trigger(prompt_4, word_4);
         cout << '\n';
         }
+
 }
 
     game.print_score();

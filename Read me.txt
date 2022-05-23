@@ -1,5 +1,3 @@
-# oop-s1-2022
-
 When compile, please compile all three cpp files.
 
 Introduction of this game:
