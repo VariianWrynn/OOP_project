@@ -42,6 +42,8 @@ int main(){
 
     int num_of_rounds;
     cout << endl;
+    cout << endl;
+    cout << endl;
     cout << "How many rounds you would like to play?" << endl;   
         while(!(cin >> num_of_rounds)){
                 cout << "error: ";
@@ -50,7 +52,7 @@ int main(){
             } 
     cout << endl;
 
-    game.blacjjack_welcome();
+    game.blackjack_welcome();
     cout << endl;
 
 for (int round_num = 1; round_num <= num_of_rounds; round_num++) {
@@ -58,9 +60,9 @@ for (int round_num = 1; round_num <= num_of_rounds; round_num++) {
 
         int count = 0; //number of cards have been drawn so far
 
-        cout<<endl;
-        cout<<endl;
-        cout<<"###################  Round : "<< round_num << "  ######################"<<endl;
+        cout << endl;
+        cout << endl;
+        cout <<"###################  Round : "<< round_num << "  ######################"<< endl;
         
         for(int b = 0; b < firstround_num_cards; b++){
             //player cards
@@ -162,7 +164,7 @@ for (int round_num = 1; round_num <= num_of_rounds; round_num++) {
         int decider = game.decide_winner(game.get_sum(Phandcard,count),game.get_sum(Chandcard,count));
 
         eCash.consume(decider);
-        if (eCash.get_money() == 0){
+        if (eCash.get_money() < 0){
             cout << "Game will terminate." << endl;
             return 0;
         }
@@ -179,6 +181,8 @@ for (int round_num = 1; round_num <= num_of_rounds; round_num++) {
         string word_4 = "next";
         game.trigger(prompt_4, word_4);
         cout << '\n';
+        cout << endl;
+        cout << endl;
         }
 
 }

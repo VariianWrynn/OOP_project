@@ -15,7 +15,7 @@ computer.o: computer.cpp computer.h cardgame.h blackjack.h player.h
 human.o: human.cpp human.h cardgame.h blackjack.h player.h
 	g++ -c human.cpp
 
-eCash.o: eCash.cpp eCash.h
+eCash.o: eCash.cpp eCash.h human.h cardgame.h blackjack.h
 	g++ -c eCash.cpp
 
 clean:

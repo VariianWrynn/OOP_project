@@ -16,7 +16,7 @@ using namespace std;
 
 //#################### _21POINT_GAME CLASS IMPLENMENTATIONS####################//
 
-void blackjack::blacjjack_welcome(){
+void blackjack::blackjack_welcome(){
     srand(time(NULL));
     static const int nums_rands = 3;
     int rand_start = rand() % nums_rands;
@@ -46,6 +46,14 @@ void blackjack::welcome(){
     cout << "For rules, please go to: https://en.wikipedia.org/wiki/Blackjack" << endl;
     cout << endl;
 
+    string prvent_crush;
+    cout << "Enter 'start' to start the game: ";
+    cin >> prvent_crush;
+    while (prvent_crush != "start")
+    {
+        cout << "Enter 'start' to start the game: ";
+        cin >> prvent_crush;
+    }
 }
 
 void blackjack::refresh_card(int* handcard){

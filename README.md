@@ -14,3 +14,12 @@ And all J,Q and Ks count as 10 points.
 
 
 This is lisence by 池深，張祥恩，喬和修。
+
+P.S. This project can be divided into 2 version:
+
+    First version (run.exe): 
+    This is for the OOP course project (University of Adelaide). 
+    It includes the whole main functions of game but it doesn't include the additional feature (you will see the features in second version.)
+
+    Second version (game_eCash): 
+    This includes the function of eCash and it can also link to start the project game (run.exe). Hence, this version is like an additional function.

@@ -1,11 +1,3 @@
 {
-    "makefile.extensionOutputFolder": "./.vscode",
-    "files.associations": {
-        "iostream": "cpp",
-        "atomic": "cpp",
-        "istream": "cpp",
-        "xlocale": "cpp",
-        "ostream": "cpp",
-        "xstring": "cpp"
-    }
+    "makefile.extensionOutputFolder": "./.vscode"
 }

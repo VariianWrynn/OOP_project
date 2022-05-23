@@ -74,7 +74,7 @@ int eCash::change_bet(){
             return 0;
         }
 
-//Automactically charge ticket before player enter the game.
+//Automactically charge ticket before player enter the game and add the "bet" function.
 void eCash::consume(int decider){
     switch (decider) {
         case 1:
@@ -101,8 +101,8 @@ void eCash::consume(int decider){
         break;
         }
     }
-    if( Money = 0 ){
-        cout << "eCash: Your balance is 0 AUD" << endl;
+    if( Money < 0 ){
+        cout << "eCash: Your balance is below zero. Current balance: " << Money - bet << " AUD" << endl;
     }
 }
 
