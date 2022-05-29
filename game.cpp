@@ -88,10 +88,8 @@ for (int round_num = 1; round_num <= num_of_rounds; round_num++) {
         cout << "Dealer have chose to stay." << endl;
         cout << '\n';
 
-            string prompt_2 = "Please enter 'decide' to decide winner of this round: ";
-            string word_2 = "decide";
-            game.trigger(prompt_2, word_2);
-            cout << '\n';
+        cout << "Showing all cards..." << endl;
+        system("pause");
 
         //writing in the value of the decider
         cout << "Your sum is: " << game.get_sum(Phandcard,count) << endl;
@@ -151,12 +149,9 @@ for (int round_num = 1; round_num <= num_of_rounds; round_num++) {
 
         Player.information_before_deciding_winner(Cactualcards ,count);
 
-        //at this point player or dealer have called the round
-        string prompt_3 = "Please enter 'decide' to decide winner of this round: ";
-        string word_3 = "decide";
-        game.trigger(prompt_3, word_3);
-        cout << '\n';
-        
+        cout << "Showing all cards..." << endl;
+        system("pause");
+
         display_index = 0;
         game.display_cards(display_index, Cactualcards, count);
         Computer.show_computer_cards(count);
@@ -166,6 +161,7 @@ for (int round_num = 1; round_num <= num_of_rounds; round_num++) {
         eCash.consume(decider);
         if (eCash.get_money() < 0){
             cout << "Game will terminate." << endl;
+            system("pause");
             return 0;
         }
 
@@ -174,6 +170,10 @@ for (int round_num = 1; round_num <= num_of_rounds; round_num++) {
     }
         game.refresh_card(Phandcard);
         game.refresh_card(Chandcard);
+        if (round_num == num_of_rounds){
+            cout << "That was the last round, thank you for playing!" << endl;
+            system("pause");
+        }
 
         if (round_num != num_of_rounds){
         //cout << "###################  ROUND BREAK  ###################" << endl;
